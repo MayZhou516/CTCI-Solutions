@@ -59,7 +59,7 @@ static Node add(Node a, Node b, int carryout) {
   return result;
 }
   
-// CTCI 2.5
+// CTCI 2.5: Detecting a cycle in a linked list
 
 // optimized solution
 LinkedListNode findBeginning(LinkedListNode head) {
