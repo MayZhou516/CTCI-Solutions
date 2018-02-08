@@ -118,7 +118,13 @@ public static Stack<Integer> sort(Stack<Integer>s) {
 	return r;
 }
 
+// CTCI 2.8: Check whether or not a linkedlist is a palindrome
+// Has 4 main parts:
+
 boolean isPalindrome(LinkedListNode head) {
+	// use the runner technique so that you can get to the halfway point
+	// while the slow node is getting to the middle, you want to push the
+	// data from that onto a stack
 	LinkedListNode fast = head;
 	LinkedListNode slow = head;
 	Stack <Integer> stack = new Stack <Integer>();
@@ -127,9 +133,16 @@ boolean isPalindrome(LinkedListNode head) {
 		slow = slow.next;
 		fast = fast.next.next;
 	}
+
+	// takes care of the case of an odd numbered palindrome,
+	// where the middle letter does not affect whether or not it is a palindrome
 	if(fast != null) {
 		slow = slow.next;
 	}
+
+	// last part, which is to compare whether or not the elements in the stack
+	// being popped off match the elements as you continue the slow node throughout the linked list
+	// immediately return false if it's not true
 	while (slow != null) {
 		int top = stack.pop();
 		if(top != slow.data) {
